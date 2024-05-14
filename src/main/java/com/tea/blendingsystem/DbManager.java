@@ -87,7 +87,7 @@ public class DbManager {
 
     public List<Deviation> getDeviations() {
         try (Connection conn = DriverManager.getConnection(connectionString)) {
-            PreparedStatement stmt = conn.prepareStatement("select * from deviations join current_params on cur_param_id = id_cur_param;");
+            PreparedStatement stmt = conn.prepareStatement("select * from deviations join current_params on cur_param_id = id_cur_param join equipment on equip_id = id_equip;");
             ResultSet rs = stmt.executeQuery();
 
             ArrayList<Deviation> devs = new ArrayList<>();

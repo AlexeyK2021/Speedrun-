@@ -57,4 +57,14 @@ public class Param {
     public void setEquip_id(int equip_id) {
         this.equip_id = equip_id;
     }
+
+    @Override
+    public String toString() {
+        return "Param{" +
+                "name='" + name + '\'' +
+                ", value=" + value +
+                ", equip_id=" + equip_id +
+                ", equipment=" + equipment +
+                '}';
+    }
 }

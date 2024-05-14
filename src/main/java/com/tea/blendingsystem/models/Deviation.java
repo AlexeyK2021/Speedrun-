@@ -15,6 +15,9 @@ public class Deviation {
                     rs.getString("name_cur_param"),
                     rs.getFloat("value_cur_param")
             );
+            currentParam.setEquipment(new Equipment(
+                    rs.getString("name_equip"),
+                    rs.getString("serial_num_equip")));
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
