@@ -11,13 +11,13 @@ public class MainController {
 
 
     @GetMapping("/hello")
-    public String hello(Model model){
+    public String deviationsPage(Model model){
 //        var data = new ArrayList<Deviation>();
 //        data.add(new Deviation(123123, new Param("Temp", 123f)));
 //        data.add(new Deviation(1111, new Param("Temp", 111f)));
         List<Deviation> deviations = DbManager.getInstance().getDeviations();
         System.out.println(deviations);
         model.addAttribute("devs", deviations);
-        return "hello";
+        return "deviationsPage";
     }
 }
