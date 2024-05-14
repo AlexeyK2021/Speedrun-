@@ -1,5 +1,6 @@
 package com.tea.blendingsystem;
 import com.tea.blendingsystem.models.Deviation;
+import com.tea.blendingsystem.models.Param;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -10,7 +11,7 @@ import java.util.List;
 public class MainController {
 
 
-    @GetMapping("/hello")
+    @GetMapping("/logs")
     public String deviationsPage(Model model){
 //        var data = new ArrayList<Deviation>();
 //        data.add(new Deviation(123123, new Param("Temp", 123f)));

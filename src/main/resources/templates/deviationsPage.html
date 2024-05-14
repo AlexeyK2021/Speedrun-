@@ -9,20 +9,20 @@
     <table>
         <thead>
         <tr>
+            <td scope="col">Equipment</td>
+            <td scope="col">Equipment Serial Number</td>
             <td scope="col">Param Name</td>
             <td scope="col">Deviation</td>
             <td scope="col">Last Value</td>
-            <td scope="col">Equipment</td>
-            <td scope="col">Equipment Serial Number</td>
         </tr>
         </thead>
         <tbody th:each="item : ${devs}">
         <tr>
+            <td th:text="${item.getCurrentParam().getEquipment().getName()}"></td>
+            <td th:text="${item.getCurrentParam().getEquipment().getSerialNum()}"></td>
             <td th:text="${item.getCurrentParam().getName()}"></td>
             <td th:text="${item.getValue_dev()}"></td>
             <td th:text="${item.getCurrentParam().getValue()}"></td>
-            <td th:text="${item.getCurrentParam().getEquipment().getName()}"></td>
-            <td th:text="${item.getCurrentParam().getEquipment().getSerialNum()}"></td>
         </tr>
         </tbody>
     </table>
