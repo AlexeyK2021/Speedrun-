@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>List of Deviations</title>
+</head>
+<body>
+<h1>List of Deviations</h1>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <td scope="col">Param Name</td>
+            <td scope="col">Last Value</td>
+            <td scope="col">Normal Value</td>
+        </tr>
+        </thead>
+        <tbody th:each="item : ${devs}">
+        <tr>
+            <td th:text="${item}"></td>
+            <td th:text="${item.getValue_dev()}"></td>
+            <td th:text="${item.getParam().getValue()}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

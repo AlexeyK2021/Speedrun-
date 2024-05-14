@@ -131,6 +131,19 @@ COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
+-- Table `tea_ind`.`supplements`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `tea_ind`.`supplements` (
+  `id_supp` INT NOT NULL,
+  `name_supp` TEXT NULL DEFAULT NULL,
+  `decs_supp` TEXT NULL DEFAULT NULL,
+  PRIMARY KEY (`id_supp`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
 -- Table `tea_ind`.`reference_params_tech`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `tea_ind`.`reference_params_tech` (
@@ -139,11 +152,16 @@ CREATE TABLE IF NOT EXISTS `tea_ind`.`reference_params_tech` (
   `describe_ref_equip` TEXT NOT NULL,
   `value_ref_equip` FLOAT NOT NULL,
   `type_param_id` INT NOT NULL,
+  `supp_id` INT NULL DEFAULT NULL,
   PRIMARY KEY (`id_ref_equip`),
   INDEX `type_param_id` (`type_param_id` ASC) VISIBLE,
+  INDEX `supp_id` (`supp_id` ASC) VISIBLE,
   CONSTRAINT `reference_params_tech_ibfk_1`
     FOREIGN KEY (`type_param_id`)
-    REFERENCES `tea_ind`.`type_param` (`id_type_param`))
+    REFERENCES `tea_ind`.`type_param` (`id_type_param`),
+  CONSTRAINT `reference_params_tech_ibfk_2`
+    FOREIGN KEY (`supp_id`)
+    REFERENCES `tea_ind`.`supplements` (`id_supp`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -157,19 +175,6 @@ CREATE TABLE IF NOT EXISTS `tea_ind`.`roles` (
   `name_role` TEXT NOT NULL,
   `describe_role` TEXT NOT NULL,
   PRIMARY KEY (`id_roles`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
-
-
--- -----------------------------------------------------
--- Table `tea_ind`.`supplements`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `tea_ind`.`supplements` (
-  `id_supp` INT NOT NULL,
-  `name_supp` TEXT NULL DEFAULT NULL,
-  `decs_supp` TEXT NULL DEFAULT NULL,
-  PRIMARY KEY (`id_supp`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -207,6 +212,9 @@ USE `tea_ind` ;
 DELIMITER $$
 USE `tea_ind`$$
 CREATE DEFINER=`root`@`localhost` FUNCTION `check_temperature`(value_param FLOAT, name_equip TEXT) RETURNS int
+DETERMINISTIC
+NO SQL
+READS SQL DATA
 BEGIN
 declare ref float;
 declare dev float;
