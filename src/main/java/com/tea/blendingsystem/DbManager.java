@@ -69,8 +69,11 @@ public class DbManager {
 
     public List<Log> getLogs(int count) {
         try (Connection conn = DriverManager.getConnection(connectionString)) {
-            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM logi ORDER BY datetime_log DESC LIMIT ?");
-            stmt.setInt(1, count);
+            PreparedStatement stmt = conn.prepareStatement("select * from deviations \n" +
+                    "join current_params on cur_param_id = id_cur_param\n" +
+                    "join equipment on equip_id = id_equip\n" +
+                    "join logi on deviations.id_deviation = logi.deviation_id \n" +
+                    "join type_log on type_log.id_type_log = logi.type_log_id;");
             ResultSet rs = stmt.executeQuery();
 
             ArrayList<Log> logs = new ArrayList<>();

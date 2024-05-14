@@ -9,6 +9,8 @@ public class Log {
     private Timestamp datetime;
     private int deviation_id;
     private int type_log_id;
+    private Deviation deviation;
+    private LogType logType;
 
     public Log(Timestamp datetime, int deviation_id, int type_log_id) {
         this.datetime = datetime;
@@ -21,6 +23,8 @@ public class Log {
             datetime = rs.getTimestamp("datetime_log");
             deviation_id = rs.getInt("deviation_id");
             type_log_id = rs.getInt("type_log_id");
+            deviation = new Deviation(rs);
+            logType = new LogType(rs);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -48,6 +52,22 @@ public class Log {
 
     public void setType_log_id(int type_log_id) {
         this.type_log_id = type_log_id;
+    }
+
+    public Deviation getDeviation() {
+        return deviation;
+    }
+
+    public void setDeviation(Deviation deviation) {
+        this.deviation = deviation;
+    }
+
+    public LogType getLogType() {
+        return logType;
+    }
+
+    public void setLogType(LogType logType) {
+        this.logType = logType;
     }
 
     @Override
