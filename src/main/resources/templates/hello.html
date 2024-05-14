@@ -16,9 +16,9 @@
         </thead>
         <tbody th:each="item : ${devs}">
         <tr>
-            <td th:text="${item}"></td>
+            <td th:text="${item.getCurrentParam().getName()}"></td>
             <td th:text="${item.getValue_dev()}"></td>
-            <td th:text="${item.getParam().getValue()}"></td>
+            <td th:text="${item.getCurrentParam().getValue()}"></td>
         </tr>
         </tbody>
     </table>

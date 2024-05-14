@@ -7,8 +7,8 @@ public class Param {
 
     private String name;
     private float value;
-    //    private String type;
     private int equip_id;
+    private Equipment equipment;
 
     public Param(String name, float value) {
         this.name = name;
@@ -26,6 +26,13 @@ public class Param {
         }
     }
 
+    public Equipment getEquipment() {
+        return equipment;
+    }
+
+    public void setEquipment(Equipment equipment) {
+        this.equipment = equipment;
+    }
 
     public String getName() {
         return name;

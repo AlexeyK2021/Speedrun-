@@ -37,6 +37,7 @@ public class DbManager {
             stmt.setInt(1, equipmentId);
             ResultSet rs = stmt.executeQuery();
 
+
             ArrayList<Param> params = new ArrayList<>();
             while (rs.next()) {
                 params.add(new Param(rs));
@@ -86,7 +87,7 @@ public class DbManager {
 
     public List<Deviation> getDeviations() {
         try (Connection conn = DriverManager.getConnection(connectionString)) {
-            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM deviations");
+            PreparedStatement stmt = conn.prepareStatement("select * from deviations join current_params on cur_param_id = id_cur_param;");
             ResultSet rs = stmt.executeQuery();
 
             ArrayList<Deviation> devs = new ArrayList<>();
