@@ -1,0 +1,24 @@
+* {
+  font-family: 'Inter', sans-serif;
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+
+h1{
+
+}
+
+.table_title {
+  width: 100%;
+  padding: 15px;
+  border: 0;
+  background-color: #F4DA7E;
+}
+
+td {
+  width: 100%;
+  padding: 15px;
+  border: 0;
+  background-color: #757575;
+}

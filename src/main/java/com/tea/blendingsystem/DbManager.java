@@ -13,7 +13,7 @@ public class DbManager {
     private String dbUrl = "127.0.0.1";
     private final String dbPort = "3306"; //3306 - 3305
     private final String dbUser = "root";
-    private final String dbPassword = "1234";
+    private final String dbPassword = "123054";
     private final String DbName = "tea_ind";
 
     private final String connectionString;
@@ -48,6 +48,18 @@ public class DbManager {
             System.out.println(e.getMessage());
         }
         return null;
+    }
+
+    public ResultSet getTempPressList() {
+        try (Connection conn = DriverManager.getConnection(connectionString)) {
+            PreparedStatement pr = conn.prepareStatement("SELECT name_cur_param, value_cur_param FROM current_params WHERE name_cur_param = \"Температура\" OR `name_cur_param` = \"Давление\"");
+            ResultSet rs = pr.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public List<Equipment> getEquipments() {

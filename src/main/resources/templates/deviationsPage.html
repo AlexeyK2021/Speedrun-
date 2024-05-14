@@ -2,13 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Логи системы</title>
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 <h1>Логи системы</h1>
 <div>
     <table>
         <thead>
-        <tr>
+        <tr class = "table_title">
             <td scope="col">Оборудование</td>
             <td scope="col">Код</td>
             <td scope="col">Тип</td>
@@ -18,11 +19,11 @@
         </thead>
         <tbody th:each="item : ${logs}">
         <tr>
-            <td th:text="${item.getDeviation().getCurrentParam().getEquipment().getName()}"></td>
-            <td th:text="${item.getDeviation().getCurrentParam().getEquipment().getSerialNum()}"></td>
-            <td th:text="${item.getLogType().getName_log()}"></td>
-            <td th:text="${item.getDeviation().getValue_dev()}"></td>
-            <td th:text="${item.getDatetime().toString()}"></td>
+            <td th:text="${item.getDeviation().getCurrentParam().getEquipment().getName()}">Пенис</td>
+            <td th:text="${item.getDeviation().getCurrentParam().getEquipment().getSerialNum()}">Хуерга</td>
+            <td th:text="${item.getLogType().getName_log()}">Еблоид</td>
+            <td th:text="${item.getDeviation().getValue_dev()}">Пидорас</td>
+            <td th:text="${item.getDatetime().toString()}">Гомогей</td>
         </tr>
         </tbody>
     </table>
