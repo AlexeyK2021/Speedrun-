@@ -1,8 +1,7 @@
 package com.tea.blendingsystem;
 import com.tea.blendingsystem.models.Deviation;
+import com.tea.blendingsystem.models.Equipment;
 import com.tea.blendingsystem.models.Log;
-import com.tea.blendingsystem.models.Param;
-import org.springframework.messaging.Message;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.ui.Model;
@@ -26,9 +25,10 @@ public class MainController {
         return "deviationsPage";
     }
 
-    @MessageMapping("/hello")
+    @MessageMapping("/msg")
     @SendTo("/sendTopic")
-    public String greeting(Message message) throws Exception{
-        return "Hello" + message.getPayload();
+    public String greeting(String message) throws Exception{
+        System.out.println(message);
+        return "Hello";
     }
 }
